@@ -1,0 +1,20 @@
+Date: 12-09-2024
+Location: HPL Room 1
+Setup: 8m x 8m grid, 8 transmitters placed every 4m (Tx_0 located at top left corner, going clockwise)
+
+* Co-ordinates taken with reference to top left corner (0, 0)
+
+Files:
+- 2024-09-12_15-38-16 (x: 5m, y: 1m)
+- 2024-09-12_15-48-01 (x: 7m, y: 1m)
+- 2024-09-12_15-57-06 (x: 3m, y: 1m)
+- 2024-09-12_16-05-30 (x: 1m, y: 1m)
+
+- 2024-09-12_16-15-03 (x: 1m, y: 3m)
+- 2024-09-12_16-30-02 (x: 3m, y: 3m)
+- 2024-09-12_16-37-48 (x: 5m, y: 3m)
+- 2024-09-12_16-47-14 (x: 7m, y: 3m)
+
+- 2024-09-12_16-54-24 (x: 7m, y: 5m)
+- 2024-09-12_17-03-48 (x: 5m, y: 5m)
+- 2024-09-12_17-11-06 (x: 3m, y: 5m)

@@ -1,34 +1,42 @@
 import serial
 import csv
-import re
+import time
+from datetime import datetime
 
-# Set up serial connection (replace 'COM3' with your actual port)
-ser = serial.Serial('COM5', 9600)
+# Configure your serial port and baud rate
+serial_port = 'COM5'  # Replace with your port (e.g., '/dev/ttyUSB0' on Linux)
+baud_rate = 9600
+current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+output_file = f'rssi_data_{current_time}.csv'
 
-# Regular expression to match the Arduino output format
-rssi_pattern = re.compile(r'Timestamp: (\d+)ms, RSSI: (-?\d+) dBm')
+# Open the serial port
+ser = serial.Serial(serial_port, baud_rate, timeout=1)
 
-# Open CSV file for writing
-with open('rssi_data.csv', mode='w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow(['timestamp (ms)', 'rssi (dBm)'])  # Write the CSV header
+# Allow some time for the connection to establish
+time.sleep(2)
+
+# Open the CSV file for writing
+with open(output_file, mode='w', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    
+    # Write the header
+    writer.writerow(['Timestamp', 'RSSI'])
 
     try:
         while True:
-            # Read line from serial input
+            # Read a line from the serial output
             line = ser.readline().decode('utf-8').strip()
-            print(f"Received: {line}")  # For debugging purposes
-            
-            # Use regular expression to extract timestamp and rssi values
-            match = rssi_pattern.match(line)
-            if match:
-                timestamp = match.group(1)
-                rssi = match.group(2)
-                
-                # Write data to the CSV file
-                writer.writerow([timestamp, rssi])
-                
+            if line:  # Check if the line is not empty
+                print(line)  # Print to console (optional)
+
+                # Parse the line for timestamp and RSSI
+                if "Timestamp:" in line and "RSSI:" in line:
+                    timestamp = line.split("Timestamp: ")[1].split("RSSI:")[0].strip()
+                    rssi = line.split("RSSI: ")[1].split(" ")[0].strip()  # Get the RSSI value
+                    
+                    # Write to CSV
+                    writer.writerow([timestamp, rssi])
     except KeyboardInterrupt:
-        print("Terminating script.")
+        print("Stopping...")
     finally:
-        ser.close()  # Ensure the serial connection is closed
+        ser.close()  # Close the serial connection

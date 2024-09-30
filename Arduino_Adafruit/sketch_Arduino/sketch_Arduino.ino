@@ -1,8 +1,7 @@
 #include <ArduinoBLE.h>
 
-BLEDevice peripheral;
-BLECharacteristic batteryLevelChar;  // Declare this as a global variable
-BLECharacteristic batteryChar;         // This will hold the reference to battery level characteristic
+BLEDevice peripheral;           // Temporary device for scanning
+BLECharacteristic batteryChar;  // Characteristic for the current device
 
 const char* batteryServiceUUID = "180F"; // Battery Service UUID
 const char* batteryCharUUID = "2A19";    // Battery Level Characteristic UUID
@@ -43,7 +42,6 @@ void loop() {
       // Disconnect after reading
       BLE.disconnect();
       Serial.println("Disconnected from the peripheral.");
-      delay(1000); // Add a delay of 1 second
       BLE.scan(); // Restart scanning
     }
   }
@@ -94,10 +92,16 @@ void readBatteryLevel() {
 void reportRSSI(BLEDevice& peripheral) {
     // While connected, report the RSSI every 0.01 second
     while (peripheral.connected()) {
-        int rssi = peripheral.rssi();
-        Serial.print("RSSI: ");
+        unsigned long timestamp = millis();  // Get the current time in milliseconds
+        int rssi = peripheral.rssi();  // Get the RSSI value
+        
+        // Print timestamp and RSSI
+        Serial.print("Timestamp: ");
+        Serial.print(timestamp);  // Print the timestamp
+        Serial.print(" ms, RSSI: ");
         Serial.print(rssi);
         Serial.println(" dBm");
+        
         delay(10); // Delay before the next RSSI reading
     }
 }

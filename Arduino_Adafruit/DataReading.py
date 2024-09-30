@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 
 # Configure your serial port and baud rate
-serial_port = 'COM3'  # Replace with your port (e.g., '/dev/ttyUSB0' on Linux)
+serial_port = 'COM5'  # Replace with your port (e.g., '/dev/ttyUSB0' on Linux)
 baud_rate = 9600
 current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
 output_file = f'rssi_data_{current_time}.csv'

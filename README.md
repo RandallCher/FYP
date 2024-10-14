@@ -18,3 +18,8 @@ python -m venv .venv
 ```bash
 pip install -r requirements.txt
 ```
+
+- To freeze requirements
+```bash
+pip freeze > requirements.txt
+```

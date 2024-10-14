@@ -1,8 +1,20 @@
 # FYP, Object tracking
 ## Virtual environment
 
-1. To activate virtual envionment
+
+- To create virtual envionment
 
 ```bash
-.venv\Scripts\activate
+python -m venv .venv
+```
+
+- To activate virtual envionment
+
+```bash
+. .venv/Scripts/activate
+```
+
+- To install requirements
+```bash
+pip install -r requirements.txt
 ```

@@ -1,8 +1,10 @@
 #### THIS FILE CONTAINS COMMON FUNCTIONS AND CLASSES
 
+
+
 from sklearn import preprocessing
 
-
+samples_normalised_2m = None
 
 def preprocess_dataset(df_train, df_test):
 

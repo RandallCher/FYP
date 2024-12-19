@@ -26,3 +26,8 @@ pip freeze > requirements.txt
 
 
 
+- To start app on local server 
+```bash 
+cd my-react-app
+npm start
+```

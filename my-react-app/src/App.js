@@ -5,14 +5,27 @@ import './App.css';
 
 function App() {
 
-  const [redSquarePosition, setRedSquarePosition] = useState({ row: 0, column: 0 });
+  const [receiverPosition, setReceiverPosition] = useState({ row: 0, column: 1.5 });
 
   // Fetch data from the backend
   useEffect(() => {
-    fetch('http://localhost:5000/red-square') // Replace with your backend endpoint
-      .then((response) => response.json())
-      .then((data) => setRedSquarePosition(data))
-      .catch((error) => console.error('Error fetching red square position:', error));
+    const fetchPosition = () => {
+      fetch('http://localhost:5000/receiver-position')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => setReceiverPosition(data))
+        .catch((error) => console.error('Error fetching receiver position:', error));
+    };
+  
+    // Fetch every 2 seconds
+    const interval = setInterval(fetchPosition, 2000);
+  
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
 
@@ -23,7 +36,7 @@ function App() {
         <h1>Graph Grid</h1>
       </header>
       <div className="coordinates-box">
-        <p>Current Position: Row {redSquarePosition.row}, Column {redSquarePosition.column}</p>
+        <p>Receiver Position: Row {receiverPosition.row}, Column {receiverPosition.column}</p>
       </div>
       <div className="graph-grid">
         {[...Array(64)].map((_, index) => (
@@ -32,8 +45,8 @@ function App() {
         <div
           className="red-square"
           style={{
-            top: `calc(${redSquarePosition.row} * 100px)`,
-            left: `calc(${redSquarePosition.column} * 100px)`
+            top: `calc(${receiverPosition.row} * 100px)`,
+            left: `calc(${receiverPosition.column} * 100px)`
           }}
         ></div>
       </div>

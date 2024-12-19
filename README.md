@@ -2,7 +2,7 @@
 ## Virtual environment
 
 
-- To create virtual envionment
+1. Create a Virtual Environment
 
 ```bash
 python -m venv .venv

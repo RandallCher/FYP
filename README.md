@@ -2,32 +2,36 @@
 ## Virtual environment
 
 
-1. Create a Virtual Environment
+## 1. Setup Virtual Environment
 
+Create the virtual environment (if not already created)
 ```bash
 python -m venv .venv
 ```
 
-- To activate virtual envionment
-
+activate the virtual environment
 ```bash
 . .venv/Scripts/activate
 ```
 
-- To install requirements
+install required packages
+
 ```bash
 pip install -r requirements.txt
 ```
 
-- To freeze requirements
-```bash
-pip freeze > requirements.txt
+
+
+
+## Startup the webapp
+- To start app on local server run the following line in bash
+
+```bash 
+./startupwebapp.sh
 ```
 
 
-
-- To start app on local server 
-```bash 
-cd my-react-app
-npm start
+- To freeze requirements
+```bash
+pip freeze > requirements.txt
 ```

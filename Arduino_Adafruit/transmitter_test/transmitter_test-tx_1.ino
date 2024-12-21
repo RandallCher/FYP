@@ -12,7 +12,7 @@ void setup()
     // Initialize Bluefruit
     Bluefruit.begin();
     Bluefruit.setName("Tx_1");
-    Bluefruit.setTxPower(0); // set initial Tx power (e.g., +4 dBm)
+    Bluefruit.setTxPower(2); // set initial Tx power (e.g., +4 dBm)
 
     // Set params
     Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);

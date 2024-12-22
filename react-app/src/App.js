@@ -3,9 +3,22 @@ import React, { useState, useEffect } from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 
+import GraphGrid from './components/GraphGrid';
+import FreezeButton from './components/FreezeButton';
+import CoordinatesBox from './components/CoordinatesBox';
 function App() {
 
   const [receiverPosition, setReceiverPosition] = useState({ row: 0, column: 1.5 });
+
+  const [frozenPosition, setFrozenPosition] = useState(null);
+
+  const toggleFreezePosition = () => {
+    if (frozenPosition) {
+      setFrozenPosition(null); // Unfreeze the position
+    } else {
+      setFrozenPosition(receiverPosition); // Freeze the current position
+    }
+  };
 
   // Fetch data from the backend
   useEffect(() => {
@@ -35,20 +48,10 @@ function App() {
       <header className="App-header">
         <h1>Graph Grid</h1>
       </header>
-      <div className="coordinates-box">
-        <p>Receiver Position: Row {receiverPosition.row}, Column {receiverPosition.column}</p>
-      </div>
-      <div className="graph-grid">
-        {[...Array(64)].map((_, index) => (
-          <div key={index} className="grid-cell"></div>
-        ))}
-        <div
-          className="red-square"
-          style={{
-            top: `calc(${receiverPosition.row} * 100px)`,
-            left: `calc(${receiverPosition.column} * 100px)`
-          }}
-        ></div>
+      <CoordinatesBox receiverPosition={receiverPosition} frozenPosition={frozenPosition} />
+      <div className="graph-container">
+        <GraphGrid receiverPosition={frozenPosition || receiverPosition} />
+        <FreezeButton onFreeze={toggleFreezePosition} />
       </div>
     </div>
   );

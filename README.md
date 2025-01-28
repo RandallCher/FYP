@@ -27,7 +27,7 @@ pip install -r requirements.txt
 - To start app on local server run the following line in bash
 
 ```bash 
-./startupwebapp.sh
+./startup.sh
 ```
 
 

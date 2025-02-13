@@ -1,20 +1,25 @@
-import React from 'react';
+import React from "react";
+import "../App.css"; // Ensure the CSS is applied
 
-const GraphGrid = ({ receiverPosition }) => (
+const GraphGrid = ({ receiverPosition }) => {
+    const gridSize = 8;
+    const cellSize = 100; // Each cell is 100x100 px (800px / 8)
 
-  
-  <div className="graph-grid">
-    {[...Array(64)].map((_, index) => (
-      <div key={index} className="grid-cell"></div>
-    ))}
-    <div
-      className="red-square"
-      style={{
-        top: `calc(${receiverPosition.row} * 100px)`,
-        left: `calc(${receiverPosition.column} * 100px)`,
-      }}
-    ></div>
-  </div>
-);
+    // Convert row & column into absolute pixel positions
+    const redSquareStyle = {
+        transform: `translate(${receiverPosition.column * cellSize}px, ${receiverPosition.row * cellSize}px)`,
+    };
+
+    return (
+        <div className="graph-grid">
+            {/* Create 8x8 grid */}
+            {Array.from({ length: gridSize * gridSize }, (_, index) => (
+                <div key={index} className="grid-cell"></div>
+            ))}
+            {/* Red Square representing receiver */}
+            <div className="red-square" style={redSquareStyle}></div>
+        </div>
+    );
+};
 
 export default GraphGrid;

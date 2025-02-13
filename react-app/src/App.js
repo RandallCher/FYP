@@ -3,9 +3,13 @@ import React, { useState, useEffect } from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 
+//iimported functions
 import GraphGrid from './components/GraphGrid';
 import FreezeButton from './components/FreezeButton';
 import CoordinatesBox from './components/CoordinatesBox';
+import { connectToNano33 } from './components/bluetooth'; 
+import ConnectionStatus from "./components/ConectionStatus";
+
 function App() {
 
   const [receiverPosition, setReceiverPosition] = useState({ row: 0, column: 1.5 });
@@ -40,19 +44,26 @@ function App() {
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
   }, []);
-
+ 
 
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Graph Grid</h1>
+        <h1>Grid</h1>
       </header>
       <CoordinatesBox receiverPosition={receiverPosition} frozenPosition={frozenPosition} />
       <div className="graph-container">
         <GraphGrid receiverPosition={frozenPosition || receiverPosition} />
-        <FreezeButton onFreeze={toggleFreezePosition} />
+        <div className="button-container">
+          <ConnectionStatus />
+          <FreezeButton onFreeze={toggleFreezePosition} />
+        </div>
+        
       </div>
+      <button onClick={connectToNano33} className="connect-btn">
+                Connect to Nano 33 BLE Sense
+      </button>
     </div>
   );
 }

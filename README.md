@@ -2,22 +2,34 @@
 ## Virtual environment
 
 
-- To create virtual envionment
+## 1. Setup Virtual Environment
 
+Create the virtual environment (if not already created)
 ```bash
 python -m venv .venv
 ```
 
-- To activate virtual envionment
-
+activate the virtual environment
 ```bash
 . .venv/Scripts/activate
 ```
 
-- To install requirements
+install required packages
+
 ```bash
 pip install -r requirements.txt
 ```
+
+
+
+
+## Startup the webapp
+- To start app on local server run the following line in bash
+
+```bash 
+./startup.sh
+```
+
 
 - To freeze requirements
 ```bash

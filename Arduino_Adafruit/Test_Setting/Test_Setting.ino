@@ -1,5 +1,7 @@
 #include <ArduinoBLE.h>
 
+#define NUM_TX 8
+
 BLEService sensorService("180C"); // Custom BLE Service
 BLEIntCharacteristic sensorCharacteristic("2A56", BLERead | BLENotify); // Custom Characteristic
 

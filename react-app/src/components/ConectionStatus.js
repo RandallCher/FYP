@@ -20,15 +20,16 @@ export default function ConnectionStatus() {
         <div
             style={{
                 display: "inline-block",
-                padding: "10px 20px",
+                padding: "10px 80px", // Match action-button padding
                 backgroundColor: isConnected ? "green" : "red",
                 color: "white",
-                borderRadius: "5px",
+                borderRadius: "8px", // Match action-button border radius
                 fontSize: "16px",
                 fontWeight: "bold",
+                marginTop: "30px", // Match action-button margin-top
             }}
         >
             {isConnected ? "🟢 Connected" : "🔴 Disconnected"}
-        </div>
+        </div>  
     );
 }

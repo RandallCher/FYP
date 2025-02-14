@@ -32,11 +32,19 @@
   display: inline-block;
 
 }
+
 .graph-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 20px; /* Adjusts the space between the grid and the button */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Space between status and button */
 }
 
 .action-button {

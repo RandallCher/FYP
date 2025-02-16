@@ -7,7 +7,7 @@ BLEIntCharacteristic sensorCharacteristic("2A56", BLERead | BLENotify); // Custo
 
 void setup() {
     Serial.begin(115200);
-    while (!Serial);
+    delay(1000);
 
     if (!BLE.begin()) {
         Serial.println("Failed to start BLE!");

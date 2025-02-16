@@ -4,7 +4,7 @@
 from torch import nn 
 from sklearn import preprocessing
 import torch
-samples_normalised_2m = None
+
 
 def preprocess_dataset(df_train, df_test):
 

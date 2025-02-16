@@ -9,6 +9,7 @@ import FreezeButton from './components/FreezeButton';
 import CoordinatesBox from './components/CoordinatesBox';
 import { connectToNano33 } from './components/bluetooth'; 
 import ConnectionStatus from "./components/ConectionStatus";
+import RSSITable from './components/RSSITable';
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
         </div>
         
       </div>
+      <RSSITable />
       <button onClick={connectToNano33} className="connect-btn" style={{ marginTop: '16px' }}>
         Connect to Nano 33 BLE Sense
       </button>

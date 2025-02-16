@@ -11,7 +11,7 @@ export default function ConnectionStatus() {
         };
 
         checkConnection();
-        const interval = setInterval(checkConnection, 1000); // Check every 3 seconds
+        const interval = setInterval(checkConnection, 1000); // Check every 1 second
 
         return () => clearInterval(interval); // Cleanup on unmount
     }, []);

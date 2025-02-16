@@ -36,3 +36,4 @@ export const getConnectedDevice = async () => {
     }
     return null;
 };
+

@@ -8,7 +8,8 @@ import GraphGrid from './components/GraphGrid';
 import FreezeButton from './components/FreezeButton';
 import CoordinatesBox from './components/CoordinatesBox';
 import { connectToNano33 } from './components/bluetooth'; 
-import ConnectionStatus from "./components/ConectionStatus";
+// import ConnectionStatus from "./components/ConectionStatus";
+import { SerialStatus } from "./components/ConectionStatus";
 import RSSITable from './components/RSSITable';
 
 function App() {
@@ -57,15 +58,16 @@ function App() {
       <div className="graph-container">
         <GraphGrid receiverPosition={frozenPosition || receiverPosition} />
         <div className="button-container">
-          <ConnectionStatus />
+          <SerialStatus />
           <FreezeButton onFreeze={toggleFreezePosition} />
         </div>
         
       </div>
       <RSSITable />
-      <button onClick={connectToNano33} className="connect-btn" style={{ marginTop: '16px' }}>
+      {/* <button onClick={connectToNano33} className="connect-btn" style={{ marginTop: '16px' }}>
         Connect to Nano 33 BLE Sense
-      </button>
+      </button> */}
+      <button onClick={connectToNano33}>Reconnect</button>
 
 
     </div>

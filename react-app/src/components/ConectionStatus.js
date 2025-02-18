@@ -1,35 +1,42 @@
 import { useState, useEffect } from "react";
-import { getConnectedDevice} from "./bluetooth"; // Ensure correct import path
 
-export default function ConnectionStatus() {
+export function SerialStatus() {
     const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
         const checkConnection = async () => {
-            const device = await getConnectedDevice();
-            setIsConnected(!!device);
+            try {
+                const response = await fetch("http://127.0.0.1:5000/rssi-values");
+                if (response.ok) {
+                    setIsConnected(true);
+                } else {
+                    setIsConnected(false);
+                }
+            } catch (error) {
+                setIsConnected(false);
+            }
         };
 
-        checkConnection();
-        const interval = setInterval(checkConnection, 1000); // Check every 1 second
+        checkConnection(); // Initial check
 
-        return () => clearInterval(interval); // Cleanup on unmount
+        const interval = setInterval(checkConnection, 3000); // Check every second
+        return () => clearInterval(interval); // Cleanup function
     }, []);
 
     return (
         <div
             style={{
                 display: "inline-block",
-                padding: "10px 80px", // Match action-button padding
+                padding: "10px 80px",
                 backgroundColor: isConnected ? "green" : "red",
                 color: "white",
-                borderRadius: "8px", // Match action-button border radius
+                borderRadius: "8px",
                 fontSize: "16px",
                 fontWeight: "bold",
-                marginTop: "30px", // Match action-button margin-top
+                marginTop: "30px",
             }}
         >
-            {isConnected ? "🟢 Connected" : "🔴 Disconnected"}
-        </div>  
+            {isConnected ? "Server Online" : "Server Offline"}
+        </div>
     );
 }

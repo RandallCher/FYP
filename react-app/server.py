@@ -7,6 +7,9 @@ import threading
 app = Flask(__name__)
 CORS(app)
 
+# Load trained model
+
+
 # Store real-time RSSI values (default all to 127)
 NUM_TX = 8
 rssi_data = {f"Tx_{i}": 0 for i in range(NUM_TX)}

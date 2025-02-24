@@ -68,7 +68,7 @@ function App() {
       {/* <button onClick={connectToNano33} className="connect-btn" style={{ marginTop: '16px' }}>
         Connect to Nano 33 BLE Sense
       </button> */}
-      <button onClick={connectToNano33}>Reconnect</button>
+      {/* <button onClick={connectToNano33}>Reconnect</button> */}
 
 
     </div>

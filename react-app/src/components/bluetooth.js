@@ -16,10 +16,10 @@ export async function connectToNano33() {
             optionalServices: [SERVICE_UUID], // Ensure the correct service UUID is included
         });
 
-        console.log("✅ Device found:", device.name);
+        console.log(" Device found:", device.name);
 
         device.addEventListener("gattserverdisconnected", () => {
-            console.warn("❌ Disconnected from device.");
+            console.warn(" Disconnected from device.");
             connectedDevice = null;
         });
 

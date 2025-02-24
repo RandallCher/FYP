@@ -3,12 +3,14 @@ import "../App.css"; // Ensure the CSS is applied
 
 const GraphGrid = ({ receiverPosition }) => {
     const gridSize = 8;
-    const cellSize = 100; // Each cell is 100x100 px (800px / 8)
+    // const cellSize = 100; // Each cell is 100x100 px (800px / 8)
 
-    // Convert row & column into absolute pixel positions
+    // Centers the red square
     const redSquareStyle = {
-        transform: `translate(${receiverPosition.column * cellSize}px, ${receiverPosition.row * cellSize}px)`,
+        transform: `translate(${receiverPosition.column * 100 + 35}px, 
+                               ${receiverPosition.row * 100 + 35}px)`,
     };
+    
 
     return (
         <div className="graph-grid">

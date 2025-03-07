@@ -19,6 +19,7 @@ CORS(app)
 
 # Serial Port Settings
 SERIAL_PORT = "COM3"  # Change to "COM5" for laptop
+
 BAUD_RATE = 9600
 PREDICTION_INTERVAL = 2  # Predict every 2 seconds
 NUM_TX = 8  # Number of transmitters

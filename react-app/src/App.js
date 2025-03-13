@@ -7,7 +7,7 @@ import './App.css';
 import GraphGrid from './components/GraphGrid';
 import FreezeButton from './components/FreezeButton';
 import CoordinatesBox from './components/CoordinatesBox';
-import { connectToNano33 } from './components/bluetooth'; 
+// import { connectToNano33 } from './components/bluetooth'; 
 // import ConnectionStatus from "./components/ConectionStatus";
 import { SerialStatus } from "./components/ConectionStatus";
 import RSSITable from './components/RSSITable';

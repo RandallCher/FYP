@@ -30,9 +30,9 @@ last_sent_data = rssi_data.copy()
 latest_prediction = {"row": None, "column": None}  # Store latest prediction
 
 # Load Pre-trained Model & Scaler
-model = MLPBuilder(no_features=NUM_TX, layers=[512, 512, 512, 256])
+model = MLPBuilder(no_features=NUM_TX, layers=[512, 512, 512, 512])
 model_path = "./Deployed_model/DNN_model"
-model.load_state_dict(torch.load(f"{model_path}/DNN_model_[512, 512, 512, 256].pth"))
+model.load_state_dict(torch.load(f"{model_path}/DNN_model_[512, 512, 512, 512].pth"))
 model.eval()
 scaler_X = joblib.load(f"{model_path}/scaler_X.pkl")
 
